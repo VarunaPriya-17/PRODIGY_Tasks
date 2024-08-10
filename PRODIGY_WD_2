@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch web</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            font-style: italic;
+            text-align: center;
+            height:700px;
+            background-image: linear-gradient(rgb(74, 71, 71),grey,darkgrey,black);
+        }
+        h1{
+            font-size: 50px;
+        }
+        .stopwatch {
+            width: 300px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 3px solid #6d6d6d;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stopwatch:hover{
+            background: linear-gradient(to right,darkgrey,black);
+        }
+        
+        #timer {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            width: 80px;
+            height: 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #000000;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        #lap-times {
+            list-style: none;
+            padding: 0;
+            color: white;
+            margin: 0;
+        }
+        h1:hover{
+            background: linear-gradient(to right,black,grey,rgb(253, 251, 251));
+            -webkit-text-fill-color: transparent;
+            background-clip:  text;
+        }
+        #lap-times li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>STOP WATCH WEB..</h1>
+    <div class="stopwatch">
+        <p id="timer">00:00:00</p>
+        <button id="start-button">Start</button>
+        <button id="pause-button">Pause</button>
+        <button id="reset-button">Reset</button>
+        <button id="lap-button">Lap</button>
+        <ul id="lap-times"></ul>
+    </div>
+
+    <script>
+        let timer = document.getElementById('timer');
+        let startBtn = document.getElementById('start-button');
+        let pauseBtn = document.getElementById('pause-button');
+        let resetBtn = document.getElementById('reset-button');
+        let lapBtn = document.getElementById('lap-button');
+        let lapTimes = document.getElementById('lap-times');
+
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+        let lapCount = 0;
+        let intervalId;
+
+        startBtn.addEventListener('click', startTimer);
+        pauseBtn.addEventListener('click', pauseTimer);
+        resetBtn.addEventListener('click', resetTimer);
+        lapBtn.addEventListener('click', recordLap);
+
+        function startTimer() {
+            intervalId = setInterval(() => {
+                seconds++;
+                if (seconds === 60) {
+                    minutes++;
+                    seconds = 2;
+                }
+                if (minutes === 60) {
+                    hours++;
+                    minutes = 0;
+                }
+                timer.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+            }, 100);
+            startButton.disabled = true;
+            pauseButton.disabled = false;
+        }
+
+        function pauseTimer() {
+            clearInterval(intervalId);
+            startButton.disabled = false;
+            pauseButton.disabled = true;
+        }
+
+        function resetTimer() {
+            clearInterval(intervalId);
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+            lapCount = 0;
+            timer.textContent = '00:00:00';
+            lapTimes.innerHTML = '';
+            startBtn.disabled = false;
+            pauseBtn.disabled = true;
+        }
+
+        function recordLap() {
+            const li = document.createElement('li');
+            li.textContent = `Lap ${lapCount + 1}: ${timer.textContent}`;
+            lapTimes.appendChild(li);
+            lapCount++;
+        }
+
+        function pad(number) {
+            return (number < 10 ? '0' : '') + number;
+        }
+    </script>
+</body>
+</html>
