@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio website</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .priya{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        nav{
+            display: flex;
+            width:90%;
+            margin: auto;
+            padding: 10px 0;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav ul li{
+            display: inline-block;
+            list-style-type: none;
+            margin: 10px 20px;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: black;
+            font-size: 19px;
+            font-style: italic ;
+            font-weight: bold;
+        }
+        nav ul li a:hover{
+            color:blue
+        }
+        .Main{
+            margin-top: 10%;
+            margin-left: 8%;
+        }
+        .Main h1{
+            font-size: 40px;
+        }
+        .Main h3{
+            line-height: 27px;
+        }
+        h1 span{
+            color:rgb(46, 46, 248);
+        }
+        h3 span{
+            color:rgb(30, 166, 234);
+        }
+        .Main a{
+            background-color: black;
+            color: white;
+            text-decoration: underline;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .images{
+            width: 45%;
+            height: 80%;
+            position: absolute;
+            bottom: 0;
+            right: 100px;
+        }
+        .images img .shape{
+            width: 20px;
+
+        }
+        .images img{
+            height: 100%;
+            position: absolute;
+            left: 70%;
+            bottom: 0;
+            transform: translate(-50%);
+            transition: bottom 1s left 1s;
+        }
+        .images:hover .girl{
+            left: 60%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="priya">
+        <nav>
+            <img src="C:\Users\DELL\Desktop\html tutorials\day9\portfoliologo1.png" alt="Portfolio logo" class="logo">
+            <ul>
+                <li><a href="">Home</a> </li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Portfolio</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Hire Me</a></li>
+            </ul>
+        </nav>
+        <div class="Main">
+            <h1>Hi, I am <span>Varuna Priya..</span></h1>
+            <h3 style="color: rgb(92, 91, 91);font-style: italic;">
+                This is my official portfolio website to show all my skills and <br>projects 
+                that I have done in the past 2 years..<br><br>
+                My work experience is in the Web development well known for the frontend development.
+                <br>I am frequenly learning various programming skills and done some <span>valuable Courses and Internships..</span>
+            </h3>
+            <a href="C:\Users\DELL\Downloads\Screenshot_20240803-110259~3.png">Download CV</a>
+            <div class="images">
+                
+                <img src="C:\Users\DELL\Downloads\resume_image_without_bg-removebg-preview.png" alt="Myimage" class="girl">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
